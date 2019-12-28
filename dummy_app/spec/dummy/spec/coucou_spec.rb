@@ -1,8 +1,20 @@
 require 'active_record'
 require_relative 'spec_helper'
+require_relative '../../../../lib/extract_specific_object'
 
-describe 'co' do
-  it 'with key word expect' do
-    p DummyApp::User.all
+describe ExtractSpecificObject do
+  users =  DummyApp::User.all
+  context 'with an existing data' do
+    it do
+      object = ExtractSpecificObject.call(id: 3, model: "DummyApp::User")
+      expect(object).to eq users.last
+    end
+  end
+
+  context 'with an inexisting data' do
+    it do
+      object = ExtractSpecificObject.call(id: 8, model: "DummyApp::User")
+      expect(object).to eq "can't find DummyApp::User with id=8"
+    end
   end
 end
