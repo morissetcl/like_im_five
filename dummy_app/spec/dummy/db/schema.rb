@@ -10,27 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_28_101833) do
+ActiveRecord::Schema.define(version: 2019_12_28_185153) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "like_im_five_articles", force: :cascade do |t|
-    t.string "title"
-    t.string "body"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_like_im_five_articles_on_user_id"
-  end
-
-  create_table "like_im_five_users", force: :cascade do |t|
+  create_table "dummy_app_users", force: :cascade do |t|
     t.string "name"
-    t.string "age"
     t.string "city"
+    t.string "age"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "like_im_five_articles", "like_im_five_users", column: "user_id"
 end
