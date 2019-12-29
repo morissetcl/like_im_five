@@ -8,9 +8,10 @@ describe ExtractAssociatedObject do
   context 'for an object with a simple association' do
     context 'with an existing data' do
       it do
-        associated_user = articles.first.dummy_app_user
-        object = ExtractAssociatedObject.new(articles.first).call
-        expect(object).to eq [associated_user]
+        user_article = [[{"age"=>"0", "city"=>"paris-0", "id"=>1, "name"=>"jean-0"}]]
+        article = [{"body"=>"bodu-2", "dummy_app_user_id"=>1, "id"=>3, "title"=>"title-2"}]
+        result = ExtractAssociatedObject.new(article).call
+        expect(result).to eq user_article
       end
     end
   end
