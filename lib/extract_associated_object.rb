@@ -1,14 +1,14 @@
 require 'rails'
 
 class ExtractAssociatedObject
-  attr_reader :object
+  attr_reader :object, :associated_object
 
-  def initialize(object)
+  def initialize(object, associated_object = [])
     @object = object[0]
+    @associated_object = associated_object
   end
 
   def call
-    associated_object = []
     associated_tables_names.each do |table, column|
       value = object[column]
       next if value.nil?
@@ -17,8 +17,8 @@ class ExtractAssociatedObject
       result[0].delete('updated_at')
       result[0].delete('created_at')
       associated_object << { table: table, attributes: result }
+      ExtractAssociatedObject.new(result, associated_object).call
     end
-
     associated_object
   end
 
@@ -32,9 +32,5 @@ class ExtractAssociatedObject
       tables_names << ["#{column.split("_id").join}".pluralize, column]
     end
     tables_names
-  end
-
-  def has_foreign_key?(object)
-    object.select{ |column| column.include?("_id") }
   end
 end
