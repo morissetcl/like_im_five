@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_30_064551) do
+ActiveRecord::Schema.define(version: 2019_12_30_072240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(version: 2019_12_30_064551) do
 
   create_table "dummy_app_categories", force: :cascade do |t|
     t.string "label"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "dummy_app_topic_id"
+    t.index ["dummy_app_topic_id"], name: "index_dummy_app_categories_on_dummy_app_topic_id"
+  end
+
+  create_table "dummy_app_topics", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
