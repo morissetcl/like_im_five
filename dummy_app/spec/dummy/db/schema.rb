@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_28_213512) do
+ActiveRecord::Schema.define(version: 2019_12_30_064551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,15 @@ ActiveRecord::Schema.define(version: 2019_12_28_213512) do
     t.bigint "dummy_app_user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "dummy_app_category_id"
+    t.index ["dummy_app_category_id"], name: "index_dummy_app_articles_on_dummy_app_category_id"
     t.index ["dummy_app_user_id"], name: "index_dummy_app_articles_on_dummy_app_user_id"
+  end
+
+  create_table "dummy_app_categories", force: :cascade do |t|
+    t.string "label"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "dummy_app_users", force: :cascade do |t|

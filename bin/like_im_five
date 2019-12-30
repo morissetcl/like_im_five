@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby -wU
+require 'like_im_five'
+
+LikeImFive.call(ARGV)
