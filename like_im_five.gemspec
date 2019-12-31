@@ -6,18 +6,11 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Clement Morisset"]
   spec.email         = ["morissetcl87@gmail.com"]
 
-  spec.summary       = "https://github.com/morissetcl"
-  spec.description   = "https://github.com/morissetcl"
+  spec.summary       = "Setup your specs painless"
+  spec.description   = "Like Im Five generate a file with factories you need to test a speific object. It use you DB dévelopment to retrieve the object you want and all associations you will have need to setup the test."
   spec.homepage      = "https://github.com/morissetcl"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
-
-  spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
-
-  spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/morissetcl"
-  spec.metadata["changelog_uri"] = "https://github.com/morissetcl"
-
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
   spec.files         = Dir.chdir(File.expand_path('..', __FILE__)) do
