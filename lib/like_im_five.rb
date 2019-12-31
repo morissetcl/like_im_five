@@ -3,8 +3,7 @@ require "extract_specific_object"
 
 module LikeImFive
   class Error < StandardError; end
-  # Your code goes here...
   def self.call(arg)
-    ExtractSpecificObject.call(id: arg[0].to_i, model: arg[1])
+    ExtractSpecificObject.call(id: arg[0], model: arg[1])
   end
 end

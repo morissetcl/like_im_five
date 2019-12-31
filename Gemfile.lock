@@ -122,6 +122,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    string-similarity (2.0.1)
     thor (1.0.1)
     thread_safe (0.3.6)
     tzinfo (1.2.6)
@@ -138,6 +139,7 @@ DEPENDENCIES
   pg
   rake (~> 12.0)
   rspec (~> 3.2)
+  string-similarity
 
 BUNDLED WITH
    2.1.0
