@@ -10,7 +10,7 @@ class ExtractSpecificObject
       ActiveRecord::Base.establish_connection(db_config['development'])
       return table_not_exist(model) unless ActiveRecord::Base.connection.tables.include?(model)
 
-      result = ActiveRecord::Base.connection.execute("SELECT * FROM #{model} WHERE id=#{id}").to_a
+      result = ActiveRecord::Base.connection.execute("SELECT * FROM #{model} WHERE id='#{id}'").to_a
       return not_found(model, id) if result.blank?
 
       result[0].delete('updated_at')

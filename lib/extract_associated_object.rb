@@ -1,4 +1,5 @@
 require 'rails'
+require 'string/similarity'
 require_relative './create_factory'
 
 class ExtractAssociatedObject
@@ -14,7 +15,7 @@ class ExtractAssociatedObject
       value = object[column]
       next if value.nil?
 
-      result = ActiveRecord::Base.connection.execute("SELECT * FROM #{table} WHERE id=#{value}").to_a
+      result = ActiveRecord::Base.connection.execute("SELECT * FROM #{table} WHERE id='#{value}'").to_a
       result[0].delete('updated_at')
       result[0].delete('created_at')
       associated_object << { table: table, attributes: result }
@@ -29,8 +30,18 @@ class ExtractAssociatedObject
     tables_names = []
     object.select do |column|
       next unless column.include?("_id")
+      table = column.split("_id").join.pluralize
+      table_exist = ActiveRecord::Base.connection.tables.include?(table)
+      if !table_exist
+        ActiveRecord::Base.connection.tables.each do |table_name|
+           similarity = String::Similarity.cosine table, table_name
+           next if similarity < 0.93
 
-      tables_names << ["#{column.split("_id").join}".pluralize, column]
+           table = table_name
+        end
+      end
+
+      tables_names << ["#{table}", column]
     end
     tables_names
   end

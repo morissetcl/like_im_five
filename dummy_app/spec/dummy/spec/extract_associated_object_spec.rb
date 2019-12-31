@@ -15,5 +15,14 @@ describe ExtractAssociatedObject do
         expect(result).to eq expected_result
       end
     end
+
+    context 'handle singularize table name' do
+      it do
+        agence = [{"dummy_app_agence_id"=>1}]
+
+        result = ExtractAssociatedObject.new(agence).call
+        expect(result).to eq [{:attributes=>[{"dummy_app_commercial_id"=>1, "id"=>1, "name"=>"Houston"}], :table=>"dummy_app_agence"}, {:attributes=>[{"id"=>1, "name"=>"James"}], :table=>"dummy_app_commerciaux"}]
+      end
+    end
   end
 end
