@@ -27,7 +27,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "rails", "~> 5.2.4", ">= 5.2.4.1"
 
-  spec.add_development_dependency "string-similarity"
   spec.add_development_dependency "pg"
   spec.add_development_dependency "rspec", "~> 3.2"
 end

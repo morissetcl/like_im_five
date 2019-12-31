@@ -1,5 +1,5 @@
 require 'rails'
-require 'string/similarity'
+require "rubygems/text"
 require_relative './create_factory'
 
 class ExtractAssociatedObject
@@ -34,8 +34,9 @@ class ExtractAssociatedObject
       table_exist = ActiveRecord::Base.connection.tables.include?(table)
       if !table_exist
         ActiveRecord::Base.connection.tables.each do |table_name|
-           similarity = String::Similarity.cosine table, table_name
-           next if similarity < 0.93
+           levenshtein = Class.new.extend(Gem::Text).method(:levenshtein_distance)
+           similarity = levenshtein.call(table, table_name)
+           next if similarity > 3
 
            table = table_name
         end
