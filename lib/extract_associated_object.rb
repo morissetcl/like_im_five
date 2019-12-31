@@ -1,4 +1,5 @@
 require 'rails'
+require_relative './create_factory'
 
 class ExtractAssociatedObject
   attr_reader :object, :associated_object
@@ -19,7 +20,7 @@ class ExtractAssociatedObject
       associated_object << { table: table, attributes: result }
       ExtractAssociatedObject.new(result, associated_object).call
     end
-    associated_object
+    CreateFactory.call(associated_object)
   end
 
   private
