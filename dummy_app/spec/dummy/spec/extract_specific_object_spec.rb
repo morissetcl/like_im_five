@@ -9,8 +9,10 @@ describe ExtractSpecificObject do
   context 'for an object without association' do
     context 'with an existing data' do
       it do
-        object = ExtractSpecificObject.call(id: 3, model: "dummy_app_users")
-        expect(object).to eq [{"age"=>"2", "city"=>"paris-2", "id"=>3, "name"=>"jean-2"}]
+        expect(ExtractAssociatedObject).to receive_message_chain(:new, :call)
+                                       .with([{"age"=>"2", "city"=>"paris-2", "id"=>3, "name"=>"jean-2"}])
+                                       .with(no_args)
+        ExtractSpecificObject.call(id: 3, model: "dummy_app_users")
       end
     end
 

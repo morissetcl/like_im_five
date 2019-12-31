@@ -15,6 +15,7 @@ class ExtractSpecificObject
 
       result[0].delete('updated_at')
       result[0].delete('created_at')
+
       ExtractAssociatedObject.new(result).call
     end
 
