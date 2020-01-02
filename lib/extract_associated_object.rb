@@ -34,7 +34,7 @@ class ExtractAssociatedObject
 
       table = column.split("_id").join.pluralize
       if table_not_exist?(table)
-        table = find_closest_table_name(column, table)
+        table = find_closest_table_name(table)
       end
       tables_names << ["#{table}", column]
     end
@@ -45,13 +45,13 @@ class ExtractAssociatedObject
     !schema_tables.include?(table)
   end
 
-  def find_closest_table_name(column, table)
+  def find_closest_table_name(table)
     schema_tables.each do |table_name|
-       levenshtein = Class.new.extend(Gem::Text).method(:levenshtein_distance)
-       similarity = levenshtein.call(table, table_name)
-       next if similarity > 3
+      levenshtein = Class.new.extend(Gem::Text).method(:levenshtein_distance)
+      similarity = levenshtein.call(table, table_name)
+      next if similarity > 3
 
-       return table_name
+      return table_name
     end
   end
 end
