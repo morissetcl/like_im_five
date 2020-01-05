@@ -14,7 +14,9 @@ class ExtractSpecificObject < GeneralConfiguration
       return not_found(table, id) if result.blank?
 
       remove_timestamps(result)
-      ExtractAssociatedObject.new(result).call
+
+      associated_object = [{ table: table, attributes: result }]
+      ExtractAssociatedObject.new(result, associated_object).call
     end
 
     private
