@@ -1,9 +1,10 @@
 # like_im_five
 
+Do you use the awesome [factory_bot gem](https://github.com/thoughtbot/factory_bot) to create your contexts ?  
 Have you ever wasted time to set up testing context rather to be focus on the code ?  
 Have you ever had pain to write a long context because of unknow associations ?
 
- Like Im Five generate a file with factories you need to test a specific object. It use you DB development to retrieve the object you want and all associations you will have need to setup the test.
+Like Im Five generate a file with factories you need to test a specific object. It use you DB development to retrieve the object you want and all associations you will have need to setup the test.
 
 **Create a complex testing context in a few seconds.**
 
@@ -31,7 +32,7 @@ Just open you terminal, go in your project and type:
 
 *(if you are facing somme issue try to prepend **bundle exec** before the commands above)*
 
-**It take two parameters.**
+**It takes two parameters.**
 
 `id_of_object`  
 The gem use your development database so you have to indicate of which one object you would like create context.
