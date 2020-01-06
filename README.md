@@ -1,11 +1,11 @@
-# LikeImFive
+# like_im_five
 
-Have you ever wasted time to set up testing context rather to be focus on the code ?
+Have you ever wasted time to set up testing context rather to be focus on the code ?  
 Have you ever had pain to write a long context because of unknow associations ?
 
  Like Im Five generate a file with factories you need to test a specific object. It use you DB development to retrieve the object you want and all associations you will have need to setup the test.
 
-Create a complex testing context in a few second.
+**Create a complex testing context in a few seconds.**
 
 ## Installation
 
@@ -31,12 +31,15 @@ Just open you terminal, go in your project and type:
 
 *(if you are facing somme issue try to prepend **bundle exec** before the commands above)*
 
-It take two parameters.
+**It take two parameters.**
 
-`id_of_object` => The gem use your development database so you have to indicate of which one object you would like create context.
-`table_of_object` => Then you have to specify what is the table of the `id` you just typed above.
+`id_of_object`  
+The gem use your development database so you have to indicate of which one object you would like create context.
 
-An example is better than 1000 words so let's taking the example below:
+`table_of_object`  
+Then you have to specify what is the table of the `id` you just typed above.
+
+**Example:**
 
 In your DB development you have these objects:
 
@@ -70,15 +73,15 @@ That's it, just copy/paste it in your concerned spec.
 
 ## Corner cases
 
- - **UID**
-I you are using uid rather than traditional ID no worries, we handle it for you. Just type commande below:
+ - **UID**  
+I you are using `UID` rather than traditional `ID` no worries, we handle it for you. Just type commande below:
 
 `like_im_five "ffe-230-opoifhhfru-333" dummy_app_articles`
 
-  - **Similarity detection to match table name with model**
+  - **Similarity detection to match table name with model**  
 For some reason it can be useful to use `Inflection`, especially if you are not coding in english.
 
-You named a table `vitraux` and your model `vitrail` we will match both to build your factory.
+If you named a table `vitraux` and your model `vitrail` we will match both to build your factory.
 
 *nb: if your model name is really to different than your table name it can fails to match.*
 
