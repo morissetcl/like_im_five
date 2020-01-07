@@ -1,0 +1,30 @@
+version: 2
+jobs:
+  build:
+    parallelism: 1
+    docker:
+      - image: circleci/ruby:2.6.0
+        environment:
+          BUNDLE_JOBS: 3
+          BUNDLE_RETRY: 3
+          BUNDLE_PATH: vendor/bundle
+          PGHOST: 127.0.0.1
+          PGUSER: circleci-demo-ruby
+          RAILS_ENV: test
+
+    working_directory: ~/like_im_five/dummy_app/spec/dummy/spec
+
+    steps:
+      - checkout:
+          path: ~/like_im_five/dummy_app
+      - run:
+          command: gem install bundler:2.0.2
+          name: Which bundler?
+
+      - run:
+          name: Bundle Install
+          command: bundle check || bundle install
+
+      - run:
+          name: Run rspec in parallel
+          command: bundle exec rspec
