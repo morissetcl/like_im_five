@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["morissetcl87@gmail.com"]
 
   spec.summary       = "Create a complex testing context in a few seconds."
-  spec.description   = "Like Im Five generate a file with factories you need to test a speific object. It use you DB dévelopment to retrieve the object you want and all associations you will have need to setup the test."
+  spec.description   = "Like Im Five generate a file with factories you need to test a specific object. It use your development database to retrieve the object you want and all associations you will have need to setup the test."
   spec.homepage      = "https://github.com/morissetcl"
   spec.license       = "MIT"
   spec.post_install_message = "Like Im Five installed! Thx."
