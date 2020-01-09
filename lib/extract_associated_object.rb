@@ -49,9 +49,8 @@ class ExtractAssociatedObject
     schema_tables.each do |table_name|
       levenshtein = Class.new.extend(Gem::Text).method(:levenshtein_distance)
       similarity = levenshtein.call(table, table_name)
-      next if similarity > 3
-
-      return table_name
+      return table_name if similarity < 3
+      return table_name if table_name.split('_').include?(table)
     end
   end
 end
