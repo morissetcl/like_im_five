@@ -17,6 +17,8 @@ class ExtractAssociatedObject
       next if value.nil?
 
       result = ActiveRecord::Base.connection.execute("SELECT * FROM #{table} WHERE id='#{value}'").to_a
+      next if result.blank?
+
       result[0].delete('updated_at')
       result[0].delete('created_at')
       associated_object << { table: table, attributes: result }
@@ -36,6 +38,8 @@ class ExtractAssociatedObject
       if table_not_exist?(table)
         table = find_closest_table_name(table)
       end
+      next if table.kind_of?(Array)
+
       tables_names << ["#{table}", column]
     end
     tables_names
@@ -49,9 +53,8 @@ class ExtractAssociatedObject
     schema_tables.each do |table_name|
       levenshtein = Class.new.extend(Gem::Text).method(:levenshtein_distance)
       similarity = levenshtein.call(table, table_name)
-      next if similarity > 3
-
-      return table_name
+      return table_name if similarity < 3
+      return table_name if table_name.split('_').include?(table)
     end
   end
 end

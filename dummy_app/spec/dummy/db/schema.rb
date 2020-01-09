@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_31_115543) do
+ActiveRecord::Schema.define(version: 2020_01_09_062224) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,8 +30,10 @@ ActiveRecord::Schema.define(version: 2019_12_31_115543) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "dummy_app_category_id"
+    t.bigint "website_id"
     t.index ["dummy_app_category_id"], name: "index_dummy_app_articles_on_dummy_app_category_id"
     t.index ["dummy_app_user_id"], name: "index_dummy_app_articles_on_dummy_app_user_id"
+    t.index ["website_id"], name: "index_dummy_app_articles_on_website_id"
   end
 
   create_table "dummy_app_categories", force: :cascade do |t|
@@ -59,6 +61,12 @@ ActiveRecord::Schema.define(version: 2019_12_31_115543) do
     t.string "name"
     t.string "city"
     t.string "age"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "dummy_app_websites", force: :cascade do |t|
+    t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
