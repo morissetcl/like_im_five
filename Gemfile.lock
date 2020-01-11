@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    like_im_five (1.0.2)
+    like_im_five (1.1.0)
       rails (>= 5.1.4)
 
 GEM
