@@ -3,7 +3,7 @@ require 'rails'
 class CreateFactory
   class << self
     def call(objects)
-      File.open("spec/data.txt", "w+") do |f|
+      File.open(path, "w+") do |f|
         objects.each do |object|
           f.puts(formatte_factory(object))
           f.puts("\n")
@@ -12,6 +12,10 @@ class CreateFactory
     end
 
     private
+
+    def path
+      Rails.env.test? ? "./dummy_app/spec/data.txt" : "spec/data.txt"
+    end
 
     def formatte_factory(object)
       atttributes_symbolized = object[:attributes][0].inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
