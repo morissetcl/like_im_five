@@ -73,6 +73,7 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.7)
       mini_portile2 (~> 2.4.0)
+    pg (1.2.2)
     rack (2.0.8)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -134,6 +135,7 @@ PLATFORMS
 
 DEPENDENCIES
   like_im_five!
+  pg
   rake (~> 12.0)
   rspec (~> 3.2)
 

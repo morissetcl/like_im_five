@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/like_im_five.svg)](https://badge.fury.io/rb/like_im_five)
+![Build Status](https://img.shields.io/circleci/build/github/morissetcl/like_im_five/master)
 # like_im_five
 
 Do you use the awesome [factory_bot gem](https://github.com/thoughtbot/factory_bot) to create your contexts ?  
@@ -108,6 +110,12 @@ create_table "dummy_app_articles", force: :cascade do |t|
   ````
 
 Connect `website_id` with `dummy_app_websites` can be messy but that's fine.
+
+## Testing
+
+To run the test suite please type in your cli:
+
+`bundle exec rspec dummy_app/spec/dummy/spec`
 
 ## Contributing
 
