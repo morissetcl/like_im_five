@@ -21,6 +21,7 @@ class ExtractAssociatedObject
 
       result[0].delete('updated_at')
       result[0].delete('created_at')
+      result[0].delete('id')
       associated_object << { table: table, attributes: result }
       ExtractAssociatedObject.new(result, associated_object).call
     end
