@@ -3,7 +3,7 @@ require 'rails'
 class CreateFactory
   class << self
     def call(objects)
-      File.open(path, "w+") do |f|
+      File.open(path(objects.first[:table]), "w+") do |f|
         objects.each do |object|
           f.puts(formatte_factory(object))
           f.puts("\n")
@@ -13,8 +13,8 @@ class CreateFactory
 
     private
 
-    def path
-      Rails.env.test? ? "./dummy_app/spec/data.txt" : "spec/data.txt"
+    def path(table)
+      Rails.env.test? ? "./dummy_app/spec/data.txt" : "spec/#{table}.txt"
     end
 
     def formatte_factory(object)
