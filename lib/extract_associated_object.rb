@@ -19,8 +19,7 @@ class ExtractAssociatedObject
       result = ActiveRecord::Base.connection.execute("SELECT * FROM #{table} WHERE id='#{value}'").to_a
       next if result.blank?
 
-      result[0].delete('updated_at')
-      result[0].delete('created_at')
+      GeneralConfiguration.remove_timestamps(result)
       associated_object << { table: table, attributes: result }
       ExtractAssociatedObject.new(result, associated_object).call
     end

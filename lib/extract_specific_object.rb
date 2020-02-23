@@ -20,11 +20,6 @@ class ExtractSpecificObject < GeneralConfiguration
 
     private
 
-    def remove_timestamps(result)
-      result[0].delete('updated_at')
-      result[0].delete('created_at')
-    end
-
     def not_found(table, id)
       print "Can't find id=#{id} in table=#{table}"
     end
