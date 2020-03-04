@@ -11,7 +11,6 @@ class GeneralConfiguration
     def remove_timestamps(result)
       result[0].delete('updated_at')
       result[0].delete('created_at')
-      result[0].delete('id')
     end
 
     private
