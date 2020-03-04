@@ -18,7 +18,7 @@ class CreateFactory
     end
 
     def formatte_factory(object)
-      atttributes_symbolized = object[:attributes][0].inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
+      atttributes_symbolized = object[:attributes][0].inject({}){ |memo,(k,v)| memo[k.to_sym] = v; memo }
       formatted_attributes = atttributes_symbolized.to_s.delete(':').delete('{').delete('}').gsub("=>", ": ")
       factory_name = object[:table].singularize.to_sym
       "let(:#{factory_name}) { create :#{factory_name}, #{formatted_attributes} }"

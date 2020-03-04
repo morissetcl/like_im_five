@@ -10,17 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_09_062224) do
+ActiveRecord::Schema.define(version: 2020_02_23_162049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "dummy_app_agence", force: :cascade do |t|
     t.string "name"
-    t.bigint "dummy_app_commercial_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["dummy_app_commercial_id"], name: "index_dummy_app_agence_on_dummy_app_commercial_id"
   end
 
   create_table "dummy_app_articles", force: :cascade do |t|
@@ -48,6 +46,8 @@ ActiveRecord::Schema.define(version: 2020_01_09_062224) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "dummy_app_agence_id"
+    t.index ["dummy_app_agence_id"], name: "index_dummy_app_commerciaux_on_dummy_app_agence_id"
   end
 
   create_table "dummy_app_topics", force: :cascade do |t|
@@ -71,6 +71,6 @@ ActiveRecord::Schema.define(version: 2020_01_09_062224) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "dummy_app_agence", "dummy_app_commerciaux"
   add_foreign_key "dummy_app_articles", "dummy_app_users"
+  add_foreign_key "dummy_app_commerciaux", "dummy_app_agence"
 end

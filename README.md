@@ -63,10 +63,10 @@ You want to test your `article`, in your terminal you have to type the following
 and it will generate a new file in your `/spec` folder named: `name_of_your_table.txt`, so in our case `name_of_your_table.txt` containing factories:
 
 ```ruby
-let(:dummy_app_article) { create :dummy_app_article, dummy_app_user_id: 12, dummy_app_category_id: 1, title: "Subway Art 25th", body: "Anniversary Edition" }
-let(:dummy_app_user) { create :dummy_app_user, name: "Jean", city: "London", age: 20 }
-let(:dummy_app_category) { create :dummy_app_category, label: "Graffiti", dummy_app_topic_id: 3 }
-let(:dummy_app_topic) { create :dummy_app_topic, title: "Culture", description: "Culture is beautiful" }
+let(:dummy_app_article) { create :dummy_app_article, id: 1, dummy_app_user_id: 12, dummy_app_category_id: 1, title: "Subway Art 25th", body: "Anniversary Edition" }
+let(:dummy_app_user) { create :dummy_app_user, id: 12, name: "Jean", city: "London", age: 20 }
+let(:dummy_app_category) { create :dummy_app_category, id: 1, label: "Graffiti", dummy_app_topic_id: 3 }
+let(:dummy_app_topic) { create :dummy_app_topic, id: 3, title: "Culture", description: "Culture is beautiful" }
 ```
 
 That's it, just copy/paste it in your concerned spec.
