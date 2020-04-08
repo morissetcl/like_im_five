@@ -1,21 +1,22 @@
 require 'rails'
 require_relative '../create_factory'
+require_relative './tables_names_finder'
 
 class ExtractAssociatedObject
-  attr_reader :object, :associated_object, :schema_tables
+  attr_reader :attributes, :associated_object, :schema_tables
 
   def initialize(object, associated_object = [])
-    @object = object[0]
+    @attributes = object[0]
     @associated_object = associated_object
     @schema_tables = ActiveRecord::Base.connection.tables
   end
 
   def call
     associated_tables_names.each do |table, column|
-      value = object[column]
-      next if value.nil?
+      id = attributes[column]
+      next if id.nil?
 
-      result = ActiveRecord::Base.connection.execute("SELECT * FROM #{table} WHERE id='#{value}'").to_a
+      result = ActiveRecord::Base.connection.execute("SELECT * FROM #{table} WHERE id='#{id}'").to_a
       next if result.blank?
 
       GeneralConfiguration.remove_timestamps(result)
@@ -28,31 +29,6 @@ class ExtractAssociatedObject
   private
 
   def associated_tables_names
-    tables_names = []
-    object.select do |column|
-      next unless column.include?("_id")
-
-      table = column.split("_id").join.pluralize
-      if table_not_exist?(table)
-        table = find_closest_table_name(table)
-      end
-      next if table.kind_of?(Array)
-
-      tables_names << ["#{table}", column]
-    end
-    tables_names
-  end
-
-  def table_not_exist?(table)
-    !schema_tables.include?(table)
-  end
-
-  def find_closest_table_name(table)
-    schema_tables.each do |table_name|
-      levenshtein = Class.new.extend(Gem::Text).method(:levenshtein_distance)
-      similarity = levenshtein.call(table, table_name)
-      return table_name if similarity < 3
-      return table_name if table_name.split('_').include?(table)
-    end
+    TablesNamesFinder.new({ attributes: attributes, schema_tables: schema_tables }).call
   end
 end
