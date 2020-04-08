@@ -1,6 +1,6 @@
 require 'active_record'
 require_relative 'spec_helper'
-require_relative '../../../../lib/extract_specific_object'
+require_relative '../../../../lib/extractor/extract_specific_object'
 
 describe ExtractSpecificObject do
   context 'for an object without association' do

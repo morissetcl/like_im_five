@@ -1,6 +1,5 @@
 require 'rails'
-require "rubygems/text"
-require_relative './create_factory'
+require_relative '../create_factory'
 
 class ExtractAssociatedObject
   attr_reader :object, :associated_object, :schema_tables

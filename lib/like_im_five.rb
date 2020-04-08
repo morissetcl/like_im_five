@@ -1,5 +1,5 @@
 require "like_im_five/version"
-require "extract_specific_object"
+require "extractor/extract_specific_object"
 
 module LikeImFive
   class Error < StandardError; end
