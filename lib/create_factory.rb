@@ -1,5 +1,3 @@
-require 'rails'
-
 class CreateFactory
   class << self
     def call(objects)

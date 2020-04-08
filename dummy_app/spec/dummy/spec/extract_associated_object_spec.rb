@@ -1,6 +1,6 @@
 require 'active_record'
 require_relative 'spec_helper'
-require_relative '../../../../lib/extract_associated_object'
+require_relative '../../../../lib/extractor/extract_associated_object'
 
 describe ExtractAssociatedObject do
   before do

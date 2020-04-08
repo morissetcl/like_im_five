@@ -1,8 +1,7 @@
-require 'rails'
 require 'active_record'
 require 'erb'
 require_relative './extract_associated_object'
-require_relative './general_configuration'
+require_relative '../general_configuration'
 
 class ExtractSpecificObject < GeneralConfiguration
   class << self
