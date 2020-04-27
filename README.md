@@ -2,7 +2,6 @@
 ![Build Status](https://img.shields.io/circleci/build/github/morissetcl/like_im_five/master)
 # like_im_five
 
-Do you use the awesome [factory_bot gem](https://github.com/thoughtbot/factory_bot) to create your contexts ?  
 Have you ever wasted time to setting up testing context rather than focusing on the code ? 
 Have you ever had pain to write a long context because of unknow associations ?
 
