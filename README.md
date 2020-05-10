@@ -7,6 +7,8 @@ Have you ever had pain to write a long context because of unknow associations ?
 
 Like Im Five generate a file with factories you need to test a specific object. It use you DB development to retrieve the object you want and all associations you will have need to setup the test.
 
+![Alt Text](https://res.cloudinary.com/dlna8yzfyj/image/upload/v1589135054/7c7d3457af789dc5fdd5aee92bc2ff8b_duhjvb.gif)
+
 **Create a complex testing context in a few seconds.**
 
 ## Installation
