@@ -2,8 +2,8 @@
 ![Build Status](https://img.shields.io/circleci/build/github/morissetcl/like_im_five/master)
 # like_im_five
 
-Have you ever wasted time to setting up testing context rather than focusing on the code ? 
-Have you ever had pain to write a long context because of unknow associations ?
+Have you ever wasted time to setting up testing context rather than focusing on the code? 
+Have you ever had pain to reproduce a production bug in your test?
 
 Like Im Five generate a file with factories you need to test a specific object. It use you DB development to retrieve the object you want and all associations you will have need to setup the test.
 
